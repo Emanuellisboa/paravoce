@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para o meu Bundudu 🤎</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:   #F9F4EE;
+      --blush:   #E8C4B0;
+      --rose:    #C4705A;
+      --deep:    #2C1A14;
+      --warm:    #8B4A38;
+      --muted:   #A0857A;
+      --gold:    #C9975A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--deep);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, #f0d9cb55 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hearts-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .hearts-bg span {
+      position: absolute;
+      font-size: clamp(0.8rem, 2vw, 1.4rem);
+      opacity: 0;
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      0%   { opacity: 0; transform: translateY(0) rotate(0deg); }
+      10%  { opacity: 0.4; }
+      90%  { opacity: 0.2; }
+      100% { opacity: 0; transform: translateY(-110vh) rotate(360deg); }
+    }
+
+    .hero-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      animation: fadeUp 1s ease both;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 12vw, 9rem);
+      font-weight: 300;
+      line-height: 0.9;
+      color: var(--deep);
+      animation: fadeUp 1.2s ease both;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--rose);
+    }
+
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 3vw, 1.6rem);
+      color: var(--warm);
+      margin-top: 1.5rem;
+      animation: fadeUp 1.4s ease both;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      animation: fadeUp 2s ease both, bob 2s ease-in-out infinite 2s;
+    }
+
+    .hero-scroll::after {
+      content: '';
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--blush), transparent);
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ── SECTION BASE ── */
+    section {
+      padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 6vw, 4rem);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    /* ── DECLARATION ── */
+    .declaration h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 6vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 2.5rem;
+    }
+
+    .declaration h2 em {
+      font-style: italic;
+      color: var(--rose);
+    }
+
+    .declaration p {
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      line-height: 1.9;
+      color: #4a2e26;
+      margin-bottom: 1.5rem;
+    }
+
+    .declaration p strong {
+      color: var(--rose);
+      font-weight: 500;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      text-align: center;
+      color: var(--blush);
+      font-size: 1.5rem;
+      letter-spacing: 0.5em;
+      padding: 2rem 0;
+      opacity: 0.8;
+    }
+
+    /* ── PHOTO GRID ── */
+    .photos-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+    }
+    .photos-section .intro {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .photo-card {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      background: var(--blush);
+      transition: transform 0.4s ease;
+    }
+
+    .photo-card:nth-child(3n+1) { aspect-ratio: 3/4; }
+    .photo-card:nth-child(3n+2) { aspect-ratio: 4/5; }
+    .photo-card:first-child {
+      grid-column: 1 / -1;
+      aspect-ratio: 16/9;
+    }
+
+    .photo-card:hover { transform: scale(1.02); }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      background: linear-gradient(135deg, var(--blush), #d4a090);
+      color: var(--deep);
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .photo-placeholder .icon { font-size: 2rem; }
+    .photo-placeholder .label {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      opacity: 0.7;
+    }
+    .photo-placeholder .hint {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      opacity: 0.5;
+      text-transform: uppercase;
+    }
+
+    .photo-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0; right: 0;
+      padding: 1.5rem 1rem 1rem;
+      background: linear-gradient(to top, rgba(44,26,20,0.7), transparent);
+      color: white;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .photo-card:hover .photo-caption { opacity: 1; }
+
+    /* ── REASONS ── */
+    .reasons h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+    }
+
+    .reasons-list {
+      list-style: none;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .reasons-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      border-left: 2px solid var(--blush);
+      background: white;
+      border-radius: 0 4px 4px 0;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .reasons-list li:hover {
+      border-color: var(--rose);
+      transform: translateX(4px);
+    }
+
+    .reasons-list .num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      color: var(--blush);
+      line-height: 1;
+      min-width: 2rem;
+      transition: color 0.3s;
+    }
+
+    .reasons-list li:hover .num { color: var(--rose); }
+
+    .reasons-list .text {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #4a2e26;
+      padding-top: 0.3rem;
+    }
+
+    /* ── FINALE ── */
+    .finale {
+      text-align: center;
+      padding-top: 0;
+      padding-bottom: clamp(5rem, 12vw, 10rem);
+    }
+
+    .finale-wrapper {
+      background: var(--deep);
+      border-radius: 8px;
+      padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .finale-wrapper::before {
+      content: '♡';
+      position: absolute;
+      font-size: 20rem;
+      color: var(--rose);
+      opacity: 0.04;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .finale h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 8vw, 5.5rem);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 2rem;
+    }
+
+    .finale h2 em {
+      font-style: italic;
+      color: var(--blush);
+    }
+
+    .finale p {
+      color: #c4a99e;
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      line-height: 1.9;
+      max-width: 560px;
+      margin: 0 auto 2rem;
+    }
+
+    .finale-sig {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.4rem;
+      color: var(--blush);
+      margin-top: 2.5rem;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .photo-grid { grid-template-columns: 1fr; }
+      .photo-card:first-child { aspect-ratio: 4/3; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Floating hearts background -->
+<div class="hearts-bg" id="heartsContainer"></div>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <p class="hero-eyebrow">12 de junho de 2025 · Para o meu bundudu</p>
+  <h1 class="hero-title">Para o meu<br><em>Jeferson</em></h1>
+  <p class="hero-sub">Dez meses que mudaram tudo.</p>
+  <div class="hero-scroll">role</div>
+</div>
+
+<!-- ── DECLARAÇÃO ── -->
+<section class="declaration reveal">
+  <span class="section-label">A declaração</span>
+  <h2>Bundudu,<br>você é a <em>melhor</em><br>coisa que aconteceu<br>pra mim.</h2>
+
+  <p>
+    Antes de você, eu achei que já sabia o que era sentir alguém de verdade.
+    Mas então você chegou — com aquele jeito seu de ser, aquele sorriso, aquele
+    calor — e eu percebi que eu <strong>não sabia nada</strong>.
+  </p>
+  <p>
+    Nesses 10 meses, você me mostrou que amor também é segurança.
+    Que é aquela sensação de chegar em casa quando você chega perto.
+    Que é rir até doer a barriga por causa de nada.
+    Que é ser completamente eu mesmo — sem medo, sem filtro — e ser amado <strong>exatamente assim</strong>.
+  </p>
+  <p>
+    Você tem um coração imenso, Jeferson. Uma paciência que me desafia a ser melhor.
+    Uma presença que faz qualquer dia comum virar especial.
+    E não tem um único momento ao seu lado que eu quisesse trocar.
+  </p>
+  <p>
+    Eu te amo. Do jeito que transborda. Do jeito que não cabe em palavras —
+    mas eu vou continuar tentando te dizer, todos os dias.
+  </p>
+</section>
+
+<div class="divider reveal">♡ · · · ♡ · · · ♡</div>
+
+<!-- ── FOTOS ── -->
+<section class="photos-section reveal">
+  <span class="section-label">Nossos momentos</span>
+  <h2>A gente em fotos</h2>
+  <p class="intro">Substitua as imagens abaixo pelas suas fotos favoritas de vocês dois ✦</p>
+
+  <div class="photo-grid">
+
+    <div class="photo-card">
+      <!-- 🖼️ Substitua por: <img src="foto1.jpg" alt="..."> -->
+      <div class="photo-placeholder">
+        <span class="icon">📸</span>
+        <span class="label">Sua foto favorita de vocês dois</span>
+        <span class="hint">foto principal · horizontal</span>
+      </div>
+      <div class="photo-caption">O dia que tudo começou ♡</div>
+    </div>
+
+    <div class="photo-card">
+      <div class="photo-placeholder">
+        <span class="icon">✈️</span>
+        <span class="label">Uma viagem inesquecível</span>
+        <span class="hint">foto de viagem</span>
+      </div>
+      <div class="photo-caption">Explorando o mundo juntos</div>
+    </div>
+
+    <div class="photo-card">
+      <div class="photo-placeholder">
+        <span class="icon">🌙</span>
+        <span class="label">Uma noite especial</span>
+        <span class="hint">foto noturna ou de passeio</span>
+      </div>
+      <div class="photo-caption">Noites que viram memória</div>
+    </div>
+
+    <div class="photo-card">
+      <div class="photo-placeholder">
+        <span class="icon">🏖️</span>
+        <span class="label">Aquela escapada</span>
+        <span class="hint">foto de viagem</span>
+      </div>
+      <div class="photo-caption">Cada lugar é mais bonito com você</div>
+    </div>
+
+    <div class="photo-card">
+      <div class="photo-placeholder">
+        <span class="icon">🤎</span>
+        <span class="label">Um momento simples e perfeito</span>
+        <span class="hint">foto do dia a dia</span>
+      </div>
+      <div class="photo-caption">O ordinário com você é extraordinário</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider reveal">♡ · · · ♡ · · · ♡</div>
+
+<!-- ── MOTIVOS ── -->
+<section class="reasons reveal">
+  <span class="section-label">O porquê</span>
+  <h2>Razões pelas quais eu te amo</h2>
+  <ul class="reasons-list">
+    <li>
+      <span class="num">01</span>
+      <span class="text">Porque do seu lado eu sinto que posso ser exatamente quem eu sou, sem precisar esconder nada.</span>
+    </li>
+    <li>
+      <span class="num">02</span>
+      <span class="text">Porque você faz até o silêncio ser gostoso — não existe desconforto, só paz.</span>
+    </li>
+    <li>
+      <span class="num">03</span>
+      <span class="text">Porque você tem uma gargalhada que contagia qualquer ambiente e que eu poderia ouvir para sempre.</span>
+    </li>
+    <li>
+      <span class="num">04</span>
+      <span class="text">Porque você cuida com uma delicadeza que às vezes me pega de surpresa — e sempre me emociona.</span>
+    </li>
+    <li>
+      <span class="num">05</span>
+      <span class="text">Porque em 10 meses você já virou lar. E eu mal posso imaginar como vai ser daqui pra frente.</span>
+    </li>
+  </ul>
+</section>
+
+<!-- ── FINALE ── -->
+<section class="finale reveal">
+  <div class="finale-wrapper">
+    <h2>Isso é só<br><em>o começo</em>,<br>bundudu.</h2>
+    <p>
+      Dez meses são apenas o prefácio de uma história que eu quero escrever
+      com você por muito, muito tempo. Cada viagem que ainda vamos fazer,
+      cada riso que ainda vamos ter, cada manhã — eu quero ao seu lado.
+    </p>
+    <p>
+      Feliz Dia dos Namorados, Jeferson. Obrigado por existir, por me escolher,
+      e por ser exatamente quem você é. Você merece o mundo —
+      e eu estou aqui, disposto a te dar o melhor que eu tenho.
+    </p>
+    <div class="finale-sig">Com todo o meu amor,<br>Emanuel 🤎</div>
+  </div>
+</section>
+
+<script>
+  // Floating hearts
+  const container = document.getElementById('heartsContainer');
+  const symbols = ['♡', '♡', '♡', '✦', '·'];
+  for (let i = 0; i < 18; i++) {
+    const s = document.createElement('span');
+    s.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    s.style.left = Math.random() * 100 + '%';
+    s.style.bottom = '-2rem';
+    s.style.animationDuration = (12 + Math.random() * 18) + 's';
+    s.style.animationDelay = (Math.random() * 20) + 's';
+    s.style.fontSize = (0.6 + Math.random() * 1.2) + 'rem';
+    s.style.color = ['#C4705A','#E8C4B0','#C9975A'][Math.floor(Math.random()*3)];
+    container.appendChild(s);
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
